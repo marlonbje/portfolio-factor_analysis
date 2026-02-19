@@ -17,8 +17,10 @@ Shows the covariance matrix as a heatmap and individual asset standard deviation
 ## Preview
 
 ![PCA View](resources/PFA_PC.jpg)
+<img src="resources/PCA_PC.jpg" width="320" height="500"/>
 
 ![Risk View](resources/PFA_Risk.jpg)
+<img src="resources/PCA_Risk.jpg" width="320" height="500"/>
 
 ---
 
