@@ -16,8 +16,8 @@ Shows the covariance matrix as a heatmap and individual asset standard deviation
 
 ## Preview
 
-<img src="resources/PFA_PC.jpg" width="600" height="800"/>
-<img src="resources/PFA_Risk.jpg" width="600" height="800"/>
+<img src="resources/PFA_PC.jpg" width="650" height="800"/>
+<img src="resources/PFA_Risk.jpg" width="650" height="800"/>
 
 ---
 
@@ -32,7 +32,7 @@ pip install dash plotly pandas numpy
 Wire up your data source at the top of `pfa_dashboard.py`:
 
 ```python
-from your_module import PFA
+from analysis import PFA
 
 file_path = "your_data.csv"
 pfa = PFA(file_path)
@@ -48,16 +48,7 @@ risk = pfa.risk_analysis()
 Run the app:
 
 ```bash
-python pfa_dashboard.py
+python main.ipynb
 ```
 
-Open [http://localhost:8050](http://localhost:8050) in your browser.
-
----
-
-## Project Structure
-
-```
-├── pfa_dashboard.py   # Main Dash app
-└── README.md
-```
+Open [http://localhost:8050](http://localhost:8050) in your browser
