@@ -29,7 +29,7 @@ def build_pc_figure(pc):
     try:
         comps = pc[1].iloc[:3].T
     except (ValueError, KeyError):
-        comps = pc[1].
+        comps = pc[1].T
 
     fig = make_subplots(
         rows=2, cols=1,
