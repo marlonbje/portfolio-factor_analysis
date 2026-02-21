@@ -9,16 +9,11 @@ class Database:
         self.con = sqlite3.connect(database=database_name, check_same_thread=False)
         self.cur = self.con.cursor()
         
+    def close(self):
+        self.con.close()
+        
     def __repr__(self):
         return f" Database({self.database_name})"
-    
-    def __enter__(self):
-        return self
-    
-    def __exit__(self, exc_type, exc_value, traceback):
-        self.con.commit()
-        self.con.close()
-        return False
 		
     def tables(self):
         self.cur.execute("SELECT NAME FROM sqlite_master WHERE TYPE='table'")

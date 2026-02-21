@@ -21,7 +21,7 @@ class PFA:
             self.start_date = pd.to_datetime(start_date)
         except Exception as e:
             self.logger.warning("Invalid Date Format")
-            self.start_date = "2020-01-01"
+            self.start_date = pd.to_datetime("2022-08-01")
         self.stocks = self.tickers()
         
     def tickers(self):
@@ -41,9 +41,10 @@ class PFA:
             for stock in self.stocks:
                 name = f"{stock}_{self.interval}"
                 if name not in self.database.tables():
-                    data = Ticker(stock).price_data()
+                    data = Ticker(stock).price_data(self.interval)
                     if not data.empty:
                         self.database.save_df(df=data, table_name=name)
+            self.database.close()
             return True
         else:
             self.logger.warning("   No stocks available")
@@ -86,7 +87,7 @@ class PFA:
         scaled_arr = scaler.fit_transform(df)
         pca.fit(scaled_arr)
         cum_explained_var = np.cumsum(pca.explained_variance_ratio_)
-        pc = [f"P{i + 1}" for i in range(len(cum_explained_var))]
+        pc = [f"PC{i + 1}" for i in range(len(cum_explained_var))]
         components = pd.DataFrame(data=pca.components_, index=pc, columns=cols)
         return (pd.Series(data=cum_explained_var, index=pc), components)
         
